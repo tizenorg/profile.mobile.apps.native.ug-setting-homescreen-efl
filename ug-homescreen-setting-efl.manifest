@@ -1,0 +1,11 @@
+<manifest>
+	<define>
+		<domain name="setting-homescreen"/>
+	</define>
+	<assign>
+		<filesystem path="/usr/ug/bin/app-setting-homescreen" label="setting-homescreen" exec_label="setting-homescreen"/>
+	</assign>
+	<request>
+		<domain name="_"/>
+	</request>
+</manifest>
