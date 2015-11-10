@@ -48,7 +48,8 @@ export CXXFLAGS="$CXXFLAGS -DTIZEN_DEBUG_ENABLE"
 export FFLAGS="$FFLAGS -DTIZEN_DEBUG_ENABLE"
 %endif
 
-cmake . -DCMAKE_INSTALL_PREFIX=%{_prefix} \
+cmake . -DCMAKE_INSTALL_PREFIX=%{TZ_SYS_RO_UG} \
+		-DTZ_SYS_RO_PACKAGES=%{TZ_SYS_RO_PACKAGES}
 
 make %{?jobs:-j%jobs}
 
@@ -60,12 +61,12 @@ rm -rf %{buildroot}
 GOPTION="-g 6514"
 
 mkdir -p /usr/ug/bin/
-ln -sf /usr/bin/ug-client /usr/ug/bin/setting-homescreen-efl
+ln -sf /usr/bin/ug-client %{TZ_SYS_RO_UG}/bin/setting-homescreen-efl
 
 %files
 %manifest ug-homescreen-setting-efl.manifest
 
 
-/usr/ug/lib/*
-/usr/ug/res/*
-/usr/share/packages/*
+%{TZ_SYS_RO_UG}/lib/*
+%{TZ_SYS_RO_UG}/res/*
+%{TZ_SYS_RO_PACKAGES}/*
