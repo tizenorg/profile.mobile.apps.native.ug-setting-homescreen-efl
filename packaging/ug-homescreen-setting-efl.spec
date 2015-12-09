@@ -33,7 +33,7 @@ BuildRequires: pkgconfig(ail)
 BuildRequires: pkgconfig(pkgmgr-info)
 BuildRequires: pkgconfig(feedback)
 BuildRequires: pkgconfig(capi-system-system-settings)
-#BuildRequires: pkgconfig(setting-common-internal)
+BuildRequires: pkgconfig(libtzplatform-config)
 
 %description
 Description: UI Gadget, homescreen-setting-efl
