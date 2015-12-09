@@ -17,7 +17,7 @@ SET(SRCS
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 INCLUDE(FindPkgConfig)
-pkg_check_modules(pkgs REQUIRED elementary efl-extension ui-gadget-1 evas dlog vconf ail pkgmgr-info feedback)
+pkg_check_modules(pkgs REQUIRED elementary efl-extension ui-gadget-1 evas dlog vconf ail pkgmgr-info feedback libtzplatform-config)
 
 FOREACH(flag ${pkgs_CFLAGS})
 	SET(EXTRA_CXXFLAGS "${EXTRA_CXXFLAGS} ${flag}")

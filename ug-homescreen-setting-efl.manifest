@@ -1,7 +1,4 @@
 <manifest>
-	<define>
-		<domain name="setting-homescreen"/>
-	</define>
 	<request>
 		<domain name="_"/>
 	</request>
