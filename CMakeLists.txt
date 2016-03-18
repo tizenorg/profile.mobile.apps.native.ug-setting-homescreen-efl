@@ -1,12 +1,11 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
-PROJECT(ug-setting-homescreen-efl C)
+PROJECT(setting-homescreen C)
 
 # subdir
-ADD_SUBDIRECTORY(ug-setting-homescreen-efl)
-ADD_SUBDIRECTORY(po)
+ADD_SUBDIRECTORY(src)
+ADD_SUBDIRECTORY(res/po)
 
-# install xml file
-INSTALL(FILES ${CMAKE_SOURCE_DIR}/ug-homescreen-setting-efl.xml DESTINATION ${TZ_SYS_RO_PACKAGES})
+CONFIGURE_FILE(setting-homescreen.manifest-3.0.in ${PKGNAME}.manifest)
 
-# install icon
-INSTALL(FILES ${CMAKE_SOURCE_DIR}/A01-1_icon_Menu.png DESTINATION res/icons/ug-setting-homescreen-efl/)
+INSTALL(FILES setting-homescreen.manifest.xml DESTINATION ${MANIFESTDIR} RENAME ${PKGNAME}.xml)
+INSTALL(FILES shared/res/setting-homescreen.png DESTINATION ${ICONDIR})

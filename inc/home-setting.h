@@ -26,35 +26,25 @@
 
 #include <dlog.h>
 
-#define HOMESET_ERR(fmt, arg...)  LOGE(" "fmt, ##arg)
-#define HOMESET_WARN(fmt, arg...) LOGW(" "fmt, ##arg)
-#define HOMESET_DBG(fmt, arg...)  LOGD(" "fmt, ##arg)
+#define HOMESET_ERR(fmt, arg...)  dlog_print(DLOG_ERROR, LOG_TAG, " "fmt, ##arg)
+#define HOMESET_WARN(fmt, arg...) dlog_print(DLOG_WARN, LOG_TAG, " "fmt, ##arg)
+#define HOMESET_DBG(fmt, arg...)  dlog_print(DLOG_DEBUG, LOG_TAG, " "fmt, ##arg)
 
-#define HOMESET_SECURE_ERR(fmt, arg...)  SECURE_LOGE(" "fmt, ##arg)
-#define HOMESET_SECURE_WARN(fmt, arg...) SECURE_LOGW(" "fmt, ##arg)
-#define HOMESET_SECURE_DBG(fmt, arg...)  SECURE_LOGD(" "fmt, ##arg)
+#define HOMESET_SECURE_ERR(fmt, arg...)  dlog_print(DLOG_ERROR, LOG_TAG, " "fmt, ##arg)
+#define HOMESET_SECURE_WARN(fmt, arg...) dlog_print(DLOG_WARN, LOG_TAG, " "fmt, ##arg)
+#define HOMESET_SECURE_DBG(fmt, arg...)  dlog_print(DLOG_DEBUG, LOG_TAG, " "fmt, ##arg)
 
 #include <Elementary.h>
 #include <libintl.h>
-#include <ui-gadget-module.h>
 
 #define HOMESET_DOMAIN "ug-setting-homescreen-efl"
 #define HOMESET_TEXT(str) dgettext(HOMESET_DOMAIN, str)
 #define _NOT_LOCALIZED(str) (str)
 
-// launch mode
-enum
-{
-	LAUNCH_MODE_NORMAL = 0,
-};
-
 /* User created ug data */
 struct ug_data
 {
 	Evas_Object *base;
-	ui_gadget_h ug;
-
-	int mode;
 
 	Evas_Object *naviframe;
 	Elm_Object_Item *navi_item;

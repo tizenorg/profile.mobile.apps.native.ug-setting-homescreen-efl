@@ -16,12 +16,12 @@
  */
 
 
-#include <ui-gadget.h>
+#include "home-setting.h"
+#include "data.h"
+#include "home.h"
+#include "home-style.h"
 
-#include "home-setting-ug.h"
-#include "home-setting-ug-data.h"
-#include "home-setting-ug-view-home.h"
-#include "home-setting-ug-view-home-style.h"
+#include <app.h>
 
 struct ug_data *g_ug_data = NULL;
 static Evas_Object *g_popup = NULL;
@@ -36,6 +36,7 @@ enum
 {
 	MAIN_GROUP_HOMESCREEN =0,
 };
+
 static Eina_Bool _homescreen_setting_main_pop_cb(void *data, Elm_Object_Item * it)
 {
 	HOMESET_DBG("");
@@ -44,7 +45,7 @@ static Eina_Bool _homescreen_setting_main_pop_cb(void *data, Elm_Object_Item * i
 	if (ugd == NULL)
 		return EINA_FALSE;
 
-	ug_destroy_me(ugd->ug);
+	ui_app_exit();
 
 	return EINA_FALSE;
 }
@@ -57,7 +58,7 @@ static void _homescreen_setting_back_btn_cb(void *data, Evas_Object *obj, void *
 	if (ugd == NULL)
 		return;
 
-	ug_destroy_me(ugd->ug);
+	ui_app_exit();
 }
 
 void homescreen_setting_main_create_view(void *data)

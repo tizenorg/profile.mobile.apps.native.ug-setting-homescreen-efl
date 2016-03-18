@@ -17,10 +17,10 @@
 
 
 #include <vconf.h>
-#include <pkgmgr-info.h>
+//#include <pkgmgr-info.h>
 
-#include "home-setting-ug-data.h"
-#include "home-setting-ug-view-home-style.h"
+#include "data.h"
+#include "home-style.h"
 
 #define APP_ICON_MIN_SIZE ELM_SCALE_SIZE(80)
 

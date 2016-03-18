@@ -16,14 +16,14 @@
  */
 
 
-#ifndef UG_MODULE_API
-#define UG_MODULE_API __attribute__ ((visibility("default")))
-#endif
 
 #include <vconf.h>
 #include <efl_extension.h>
-#include "home-setting-ug.h"
-#include "home-setting-ug-view-home.h"
+#include <app.h>
+#include <app_control.h>
+#include <system_settings.h>
+#include "home-setting.h"
+#include "home.h"
 
 static void _package_changed_cb(keynode_t * node, void *data)
 {
@@ -91,6 +91,31 @@ static Evas_Object *_create_layout(Evas_Object *parent)
 	return layout;
 }
 
+static Evas_Object *_create_win()
+{
+	/* Window: */
+    Evas_Object *win = elm_win_util_standard_add("", "");
+    elm_win_conformant_set(win, EINA_TRUE);
+    elm_win_autodel_set(win, EINA_TRUE);
+    evas_object_show(win);
+
+    /*  Conform: */
+    Evas_Object *conform = elm_conformant_add(win);
+    elm_win_indicator_mode_set(conform, ELM_WIN_INDICATOR_SHOW);
+    elm_win_indicator_opacity_set(conform, ELM_WIN_INDICATOR_OPAQUE);
+    evas_object_size_hint_weight_set(conform, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+    elm_win_resize_object_add(win, conform);
+    evas_object_show(conform);
+
+    /*  Bg: */
+    Evas_Object *bg = elm_bg_add(conform);
+    evas_object_size_hint_weight_set(bg, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
+    elm_object_part_content_set(conform, "elm.swallow.bg", bg);
+    evas_object_show(bg);
+
+    return conform;
+}
+
 static Evas_Object *create_fullview(Evas_Object *parent, struct ug_data *ugd)
 {
 	HOMESET_DBG("");
@@ -117,45 +142,32 @@ static Evas_Object *create_fullview(Evas_Object *parent, struct ug_data *ugd)
 	return ugd->base;
 }
 
-static void *on_create(ui_gadget_h ug, enum ug_mode mode, app_control_h service, void *priv)
+static bool on_create(void *priv)
 {
 	HOMESET_DBG("");
-	Evas_Object *parent;
-	struct ug_data *ugd;
 
-	if (!ug || !priv)
-		return NULL;
-
+	struct ug_data *ugd = priv;
 	bindtextdomain(HOMESET_DOMAIN, "/usr/ug/res/locale");
-
-	ugd = priv;
-	ugd->ug = ug;
-
-	parent = ug_get_parent_layout(ug);
-	if (!parent)
-		return NULL;
-
-	// set mode
-	ugd->mode = LAUNCH_MODE_NORMAL;
+	elm_app_base_scale_set(2.6);
 
 	// notify event
 	if (vconf_notify_key_changed(VCONFKEY_SETAPPL_SELECTED_PACKAGE_NAME, _package_changed_cb, NULL) != 0)
 	{
 		HOMESET_ERR("Failed to notify package changed event");
+		return false;
 	}
 
-	ugd->base = create_fullview(parent, ugd);
+	Evas_Object *win = _create_win();
+	ugd->base = create_fullview(win, ugd);
+	elm_object_content_set(win, ugd->base);
 
-	return ugd->base;
+	return true;
 }
 
-static void on_destroy(ui_gadget_h ug, app_control_h service, void *priv)
+static void on_destroy(void *priv)
 {
-	HOMESET_DBG("");
+	HOMESET_DBG("exit");
 	struct ug_data *ugd = priv;;
-
-	if (!ug || !priv)
-		return;
 
 	if (ugd)
 	{
@@ -166,77 +178,40 @@ static void on_destroy(ui_gadget_h ug, app_control_h service, void *priv)
 		}
 	}
 
-	ugd = priv;
-
-	if(ugd->list_main) evas_object_del(ugd->list_main);
-	if(ugd->back_button) evas_object_del(ugd->back_button);
-	if(ugd->naviframe) evas_object_del(ugd->naviframe);
-	if(ugd->base) evas_object_del(ugd->base);
-
-	ugd->base = NULL;
+	free(ugd);
 }
 
-static void on_event(ui_gadget_h ug, enum ug_event event, app_control_h service, void *priv)
+static void on_language(app_event_info_h event_info, void *user_data)
 {
-	HOMESET_DBG("event [%d]", event);
-	switch (event)
+	char *language_set = NULL;
+	system_settings_get_value_string(SYSTEM_SETTINGS_KEY_LOCALE_LANGUAGE, &language_set);
+
+	if (language_set)
 	{
-	case UG_EVENT_LOW_MEMORY:
-		break;
-	case UG_EVENT_LOW_BATTERY:
-		break;
-	case UG_EVENT_LANG_CHANGE:
-		homescreen_setting_main_language_changed();
-		break;
-	case UG_EVENT_ROTATE_PORTRAIT:
-		break;
-	case UG_EVENT_ROTATE_PORTRAIT_UPSIDEDOWN:
-		break;
-	case UG_EVENT_ROTATE_LANDSCAPE:
-		break;
-	case UG_EVENT_ROTATE_LANDSCAPE_UPSIDEDOWN:
-		break;
-	case UG_EVENT_REGION_CHANGE:
-		break;
-	default:
-		break;
+		elm_language_set(language_set);
+		free(language_set);
 	}
+
+	homescreen_setting_main_language_changed();
 }
 
-UG_MODULE_API int UG_MODULE_INIT(struct ug_module_ops *ops)
+int main(int argc, char *argv[])
 {
-	HOMESET_DBG("ug init");
-	struct ug_data *ugd;
+	HOMESET_DBG("app init !!!");
 
-	if (!ops)
-		return -1;
-
-	ugd = calloc(1, sizeof(struct ug_data));
+	struct ug_data *ugd = calloc(1, sizeof(struct ug_data));
 	if (!ugd)
 		return -1;
 
-	ops->create = on_create;
-	ops->start = NULL;
-	ops->pause = NULL;
-	ops->resume = NULL;
-	ops->destroy = on_destroy;
-	ops->message = NULL;
-	ops->event = on_event;
-	ops->priv = ugd;
-	ops->opt = UG_OPT_INDICATOR_ENABLE;
+	ui_app_lifecycle_callback_s event_callback;
+	memset(&event_callback, 0x00, sizeof(ui_app_lifecycle_callback_s));
 
-	return 0;
+	event_callback.create = on_create;
+	event_callback.terminate = on_destroy;
+
+	app_event_handler_h ev = NULL;
+	ui_app_add_event_handler(&ev, APP_EVENT_LANGUAGE_CHANGED, on_language, ugd);
+
+	return ui_app_main(argc, argv, &event_callback, &ugd);
 }
 
-UG_MODULE_API void UG_MODULE_EXIT(struct ug_module_ops *ops)
-{
-	HOMESET_DBG("ug exit");
-	struct ug_data *ugd;
-
-	if (!ops)
-		return;
-
-	ugd = ops->priv;
-	if (ugd)
-		free(ugd);
-}
