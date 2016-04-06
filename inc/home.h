@@ -19,7 +19,7 @@
 #ifndef __HOME_SETTING_UG_VIEW_HOME_H__
 #define __HOME_SETTING_UG_VIEW_HOME_H__
 
-#include "home-setting-ug.h"
+#include "home-setting.h"
 
 void homescreen_setting_main_create_view(void *data);
 void homescreen_setting_main_update_view();

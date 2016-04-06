@@ -19,7 +19,7 @@
 #ifndef __HOME_SETTING_UG_DATA_H__
 #define __HOME_SETTING_UG_DATA_H__
 
-#include "home-setting-ug.h"
+#include "home-setting.h"
 
 #define HOMESCREEN_SETTING_DEFAULT_PKGNAME	"org.tizen.homescreen"
 #define HOMESCREEN_SETTING_MENU_PKGNAME	"org.tizen.menu-screen"
@@ -37,11 +37,7 @@ struct _homescreen_setting_data_list
 
 void homescreen_setting_data_set_selected_homeapp(const char *appid);
 char *homescreen_setting_data_get_selected_homeapp(void);
-char *homescreen_setting_data_get_name(const char *appid);
-char *homescreen_setting_data_get_icon(const char *appid);
 
 homescreen_setting_data_list_t *homescreen_setting_data_get_homeapp_list(int *count);
-
-int homescreen_setting_data_get_3rd_homeapp_installed();
 
 #endif /* __HOME_SETTING_UG_DATA_H__ */

@@ -19,7 +19,7 @@
 #ifndef __HOME_SETTING_UG_VIEW_HOME_STYLE_H__
 #define __HOME_SETTING_UG_VIEW_HOME_STYLE_H__
 
-#include "home-setting-ug.h"
+#include "home-setting.h"
 
 Evas_Object* _homescreen_setting_type_add_list(struct ug_data *ugd);
 
