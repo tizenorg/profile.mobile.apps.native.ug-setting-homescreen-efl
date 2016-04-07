@@ -34,6 +34,9 @@ BuildRequires: pkgconfig(pkgmgr-info)
 BuildRequires: pkgconfig(feedback)
 BuildRequires: pkgconfig(capi-system-system-settings)
 BuildRequires: pkgconfig(libtzplatform-config)
+BuildRequires: pkgconfig(capi-appfw-app-manager)
+BuildRequires: pkgconfig(capi-system-info)
+
 
 %description
 Description: Homescreen-setting
