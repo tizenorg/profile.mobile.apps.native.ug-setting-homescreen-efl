@@ -145,9 +145,18 @@ static Evas_Object *create_fullview(Evas_Object *parent, struct ug_data *ugd)
 static bool on_create(void *priv)
 {
 	HOMESET_DBG("");
-
 	struct ug_data *ugd = priv;
-	bindtextdomain(HOMESET_DOMAIN, "/usr/ug/res/locale");
+
+	char *resPath = app_get_resource_path();
+	if(resPath)
+	{
+		const char *localePath = "locale";
+		char path[PATH_MAX] = { 0, };
+		snprintf(path, sizeof(path), "%s%s", resPath, localePath);
+		bindtextdomain(HOMESET_DOMAIN, path);
+		free(resPath);
+	}
+
 	elm_app_base_scale_set(2.6);
 
 	// notify event
