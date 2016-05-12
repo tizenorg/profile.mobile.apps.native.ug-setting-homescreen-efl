@@ -2,7 +2,7 @@
 <manifest xmlns="http://tizen.org/ns/packages" api-version="3.0" package="org.tizen.setting-homescreen" version="0.1.33">
 	<label>Homescreen setting</label>
 	<description>Setting Homescreen AppControl</description>
-	<ui-application appid="org.tizen.setting-homescreen" exec="/usr/apps/org.tizen.setting-homescreen/bin/setting-homescreen" launch_mode="caller" nodisplay="true" multiple="false" type="capp" taskmanage="false" hw-acceleration="use-GL">
+	<ui-application appid="org.tizen.setting-homescreen" exec="/usr/apps/org.tizen.setting-homescreen/bin/setting-homescreen" launch_mode="caller" nodisplay="true" multiple="false" type="capp" taskmanage="false" hw-acceleration="on" process-pool="true">
 		<icon>/usr/share/icons/default/small/setting-homescreen.png</icon>
 		<label>Setting-homescreen</label>
 		<label xml:lang="ar-ae">ﺎﻠﺷﺎﺷﺓ ﺎﻟﺮﺌﻴﺴﻳﺓ</label>
