@@ -94,7 +94,7 @@ static Evas_Object *_create_layout(Evas_Object *parent)
 static Evas_Object *_create_win()
 {
 	/* Window: */
-    Evas_Object *win = elm_win_util_standard_add("", "");
+    Evas_Object *win = elm_win_add(NULL, "", ELM_WIN_BASIC);
     elm_win_conformant_set(win, EINA_TRUE);
     elm_win_autodel_set(win, EINA_TRUE);
     evas_object_show(win);
