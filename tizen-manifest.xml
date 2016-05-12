@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <manifest xmlns="http://tizen.org/ns/packages" api-version="3.0" install-location="internal-only" package="org.tizen.setting-homescreen" version="1.0.0">
     <profile name="mobile"/>
-    <ui-application appid="org.tizen.setting-homescreen" exec="setting-homescreen" hw-acceleration="on" launch_mode="group" multiple="false" nodisplay="true" taskmanage="false" type="capp">
+    <ui-application appid="org.tizen.setting-homescreen" exec="setting-homescreen" hw-acceleration="on" launch_mode="group" multiple="false" process-pool="true" nodisplay="true" taskmanage="false" type="capp">
         <label>setting-homescreen</label>
         <label xml:lang="ar-ae">ﺎﻠﺷﺎﺷﺓ ﺎﻟﺮﺌﻴﺴﻳﺓ</label>
         <label xml:lang="az-az">Əsas ekran</label>
