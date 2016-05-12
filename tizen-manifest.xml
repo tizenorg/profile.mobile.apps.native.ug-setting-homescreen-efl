@@ -1,9 +1,60 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<manifest xmlns="http://tizen.org/ns/packages" api-version="3.0" package="org.tizen.setting-homescreen" version="1.0.0" install-location="internal-only">
+<manifest xmlns="http://tizen.org/ns/packages" api-version="3.0" install-location="internal-only" package="org.tizen.setting-homescreen" version="1.0.0">
     <profile name="mobile"/>
-    <ui-application appid="org.tizen.setting-homescreen" exec="setting-homescreen" multiple="false" nodisplay="false" taskmanage="true" type="capp">
+    <ui-application appid="org.tizen.setting-homescreen" exec="setting-homescreen" hw-acceleration="on" multiple="false" nodisplay="true" process-pool="true" taskmanage="true" type="capp">
         <label>setting-homescreen</label>
         <icon>setting-homescreen.png</icon>
+        <label xml:lang="ar-ae">ﺎﻠﺷﺎﺷﺓ ﺎﻟﺮﺌﻴﺴﻳﺓ</label>
+        <label xml:lang="az-az">Əsas ekran</label>
+        <label xml:lang="bg-bg">Начален екран</label>
+        <label xml:lang="ca-es">Pantalla d'inici</label>
+        <label xml:lang="cs-cz">Domovská obrazovka</label>
+        <label xml:lang="da-dk">Startskærm</label>
+        <label xml:lang="de-de">Startbildschirm</label>
+        <label xml:lang="el-gr">Αρχική οθόνη</label>
+        <label xml:lang="en-gb">Home screen</label>
+        <label xml:lang="en-ph">Home screen</label>
+        <label xml:lang="en-us">Home screen</label>
+        <label xml:lang="es-es">Pantalla de inicio</label>
+        <label xml:lang="es-mx">Pantalla de inicio</label>
+        <label xml:lang="et-ee">Avaekraan</label>
+        <label xml:lang="eu-es">Pantaila nagusia</label>
+        <label xml:lang="fi-fi">Alkunäyttö</label>
+        <label xml:lang="fr-ca">Écran d'accueil</label>
+        <label xml:lang="fr-fr">Écran d'accueil</label>
+        <label xml:lang="ga-ie">Scáileán baile</label>
+        <label xml:lang="gl-es">Pantalla de inicio</label>
+        <label xml:lang="hi-in">होम स्क्रीन</label>
+        <label xml:lang="hr-hr">Početni zaslon</label>
+        <label xml:lang="hu-hu">Kezdőképernyő</label>
+        <label xml:lang="hy-am">Հիմնական էկրան</label>
+        <label xml:lang="is-is">Heimaskjár</label>
+        <label xml:lang="it-it">Schermata Home</label>
+        <label xml:lang="ja-jp">ホーム画面</label>
+        <label xml:lang="ka-ge">საწყისი ეკრანი</label>
+        <label xml:lang="kk-kz">Бастапқы экран</label>
+        <label xml:lang="ko-kr">홈 화면</label>
+        <label xml:lang="lt-lt">Pradžios ekranas</label>
+        <label xml:lang="lv-lv">Sākuma ekrāns</label>
+        <label xml:lang="mk-mk">Основен екран</label>
+        <label xml:lang="nb-no">Startskjerm</label>
+        <label xml:lang="nl-nl">Startscherm</label>
+        <label xml:lang="pl-pl">Ekran startowy</label>
+        <label xml:lang="pt-br">Tela principal</label>
+        <label xml:lang="pt-pt">Ecrã principal</label>
+        <label xml:lang="ro-ro">Ecran de pornire</label>
+        <label xml:lang="ru-ru">Главный экран</label>
+        <label xml:lang="sk-sk">Domovská obrazovka</label>
+        <label xml:lang="sl-si">Domači zaslon</label>
+        <label xml:lang="sr-rs">Početni ekran</label>
+        <label xml:lang="sv-se">Hemskärm</label>
+        <label xml:lang="tr-tr">Ana ekran</label>
+        <label xml:lang="uk-ua">Головний екран</label>
+        <label xml:lang="uz-uz">Asosiy ekran</label>
+        <label xml:lang="zh-cn">主屏</label>
+        <label xml:lang="zh-hk">主螢幕</label>
+        <label xml:lang="zh-sg">主屏</label>
+        <label xml:lang="zh-tw">主螢幕</label>
     </ui-application>
     <privileges>
         <privilege>http://tizen.org/privilege/packagemanager.info</privilege>
