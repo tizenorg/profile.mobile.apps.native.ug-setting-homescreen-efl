@@ -97,12 +97,12 @@ static Evas_Object *_create_win()
     Evas_Object *win = elm_win_add(NULL, "", ELM_WIN_BASIC);
     elm_win_conformant_set(win, EINA_TRUE);
     elm_win_autodel_set(win, EINA_TRUE);
+    elm_win_indicator_mode_set(win, ELM_WIN_INDICATOR_SHOW);
+    elm_win_indicator_opacity_set(win, ELM_WIN_INDICATOR_OPAQUE);
     evas_object_show(win);
 
     /*  Conform: */
     Evas_Object *conform = elm_conformant_add(win);
-    elm_win_indicator_mode_set(conform, ELM_WIN_INDICATOR_SHOW);
-    elm_win_indicator_opacity_set(conform, ELM_WIN_INDICATOR_OPAQUE);
     evas_object_size_hint_weight_set(conform, EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
     elm_win_resize_object_add(win, conform);
     evas_object_show(conform);
