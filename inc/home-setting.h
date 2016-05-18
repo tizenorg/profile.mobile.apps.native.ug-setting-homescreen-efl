@@ -37,7 +37,7 @@
 #include <Elementary.h>
 #include <libintl.h>
 
-#define HOMESET_DOMAIN "ug-setting-homescreen-efl"
+#define HOMESET_DOMAIN "setting-homescreen"
 #define HOMESET_TEXT(str) dgettext(HOMESET_DOMAIN, str)
 #define _NOT_LOCALIZED(str) (str)
 
