@@ -1,6 +1,6 @@
 Name:       org.tizen.setting-homescreen
 #VCS_FROM:   profile/mobile/apps/native/ug-setting-homescreen-efl#fb9b854f7013808cf6c904e08901d4210e481b1c
-#RS_Ver:    20160528_2 
+#RS_Ver:    20160530_1 
 Summary:    homescreen-setting
 Version:    1.0.0
 Release:    1
