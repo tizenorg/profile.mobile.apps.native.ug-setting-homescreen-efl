@@ -1,6 +1,6 @@
 Name:       org.tizen.setting-homescreen
-#VCS_FROM:   profile/mobile/apps/native/ug-setting-homescreen-efl#b9f1187e800f2b2c39dd655fe706ad09fa01234f
-#RS_Ver:    20160630_2 
+#VCS_FROM:   profile/mobile/apps/native/ug-setting-homescreen-efl#8311289c598b390ca3d190cfbfd2529527885385
+#RS_Ver:    20160706_3 
 Summary:    homescreen-setting
 Version:    1.0.0
 Release:    1
@@ -26,7 +26,7 @@ Requires(post):  /usr/bin/tpk-backend
 %endif
 
 %description
-profile/mobile/apps/native/ug-setting-homescreen-efl#b9f1187e800f2b2c39dd655fe706ad09fa01234f
+profile/mobile/apps/native/ug-setting-homescreen-efl#8311289c598b390ca3d190cfbfd2529527885385
 This is a container package which have preload TPK files
 
 %prep
