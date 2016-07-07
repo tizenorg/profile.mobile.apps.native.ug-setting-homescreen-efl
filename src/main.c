@@ -221,6 +221,6 @@ int main(int argc, char *argv[])
 	app_event_handler_h ev = NULL;
 	ui_app_add_event_handler(&ev, APP_EVENT_LANGUAGE_CHANGED, on_language, ugd);
 
-	return ui_app_main(argc, argv, &event_callback, &ugd);
+	return ui_app_main(argc, argv, &event_callback, ugd);
 }
 
