@@ -21,6 +21,11 @@
 
 #include "home-setting.h"
 
+/**
+ * @brief Creates genlist populated with items relevant to available home-screen applications.
+ * @param[in] ugd main application's data structure.
+ * @return created genlist.
+ */
 Evas_Object* _homescreen_setting_type_add_list(struct ug_data *ugd);
 
 #endif /* __HOME_SETTING_UG_VIEW_HOME_STYLE_H__ */

@@ -35,24 +35,24 @@
 #define HOMESET_SECURE_DBG(fmt, arg...)  dlog_print(DLOG_DEBUG, LOG_TAG, " "fmt, ##arg)
 
 #include <Elementary.h>
-#include <libintl.h>
 
 #define HOMESET_DOMAIN "setting-homescreen"
 #define HOMESET_TEXT(str) dgettext(HOMESET_DOMAIN, str)
-#define _NOT_LOCALIZED(str) (str)
 
-/* User created ug data */
+/**
+ * @brief Main application's data structure.
+ */
 struct ug_data
 {
-	Evas_Object *base;
+	Evas_Object *base;          /**< Main application's layout.*/
 
-	Evas_Object *naviframe;
-	Elm_Object_Item *navi_item;
+	Evas_Object *naviframe;     /**< Naviframe.*/
+	Elm_Object_Item *navi_item; /**< Naviframe-item*/
 
 	// for main view
-	Evas_Object *list_main;
+	Evas_Object *list_main;     /**< Genlist with homescreen-applications available to switch.*/
 
-	Evas_Object *back_button;
+	Evas_Object *back_button;   /**< Back-button to exit from application.*/
 };
 
 #endif /* __HOME_SETTING_UG_H__ */

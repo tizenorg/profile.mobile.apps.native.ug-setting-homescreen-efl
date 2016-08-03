@@ -21,8 +21,20 @@
 
 #include "home-setting.h"
 
-void homescreen_setting_main_create_view(void *data);
+/**
+ * @brief Creates main application's view.
+ * @param[in] ugd application's data structure.
+ */
+void homescreen_setting_main_create_view(struct ug_data *ugd);
+
+/**
+ * @brief Updates GUI when VCONFKEY_SETAPPL_SELECTED_PACKAGE_NAME vconf-key value has been changed.
+ */
 void homescreen_setting_main_update_view();
+
+/**
+ * @brief Updates GUI when system language has been changed.
+ */
 void homescreen_setting_main_language_changed();
 
 #endif /* __HOME_SETTING_UG_VIEW_HOME_H__ */

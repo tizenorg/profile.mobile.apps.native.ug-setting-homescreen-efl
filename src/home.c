@@ -61,10 +61,9 @@ static void _homescreen_setting_back_btn_cb(void *data, Evas_Object *obj, void *
 	ui_app_exit();
 }
 
-void homescreen_setting_main_create_view(void *data)
+void homescreen_setting_main_create_view(struct ug_data *ugd)
 {
 	HOMESET_DBG("create main view");
-	struct ug_data *ugd = (struct ug_data *) data;
 	if (!ugd)
 	{
 		HOMESET_ERR("invalid ugd");

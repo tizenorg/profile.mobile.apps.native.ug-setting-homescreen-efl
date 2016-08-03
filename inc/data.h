@@ -25,19 +25,37 @@
 #define HOMESCREEN_SETTING_MENU_PKGNAME	"org.tizen.menu-screen"
 
 typedef struct _homescreen_setting_data_list homescreen_setting_data_list_t;
+
+/**
+ * @brief Homescreen applications list-element data structure;
+ */
 struct _homescreen_setting_data_list
 {
-	homescreen_setting_data_list_t *next;
-	int id;
-	int index;
-	char *appid;
-	char *name;
-	char *icon;
+	homescreen_setting_data_list_t *next;   /**< Pointer to next item.*/
+	int id;                                 /**< Identifier of radio-button in radio-group..*/
+	int index;                              /**< Index of this item in whole list.*/
+	char *appid;                            /**< Application-id of homescreen-application.*/
+	char *name;                             /**< A name of homescreen-application.*/
+	char *icon;                             /**< Path to homescreen-application's icon.*/
 };
 
+/**
+ * @brief Saves selected homescreen-application into VCONFKEY_SETAPPL_SELECTED_PACKAGE_NAME vconf-key.
+ * @param appid[in] an application-id to be saved
+ */
 void homescreen_setting_data_set_selected_homeapp(const char *appid);
+
+/**
+ * @brief Reads value of VCONFKEY_SETAPPL_SELECTED_PACKAGE_NAME to figure out what homescreen-app was saved as default one.
+ * @return application-id of default homescreen application.
+ */
 char *homescreen_setting_data_get_selected_homeapp(void);
 
+/**
+ * @brief Reads list of available homescreen applications via app_info_filter API and saves it into homescreen_setting_data_list_t
+ * @param[out] count number of elements int returned list.
+ * @return a pointer to first element of list of homescreen_setting_data_list_t structures.
+ */
 homescreen_setting_data_list_t *homescreen_setting_data_get_homeapp_list(int *count);
 
 #endif /* __HOME_SETTING_UG_DATA_H__ */

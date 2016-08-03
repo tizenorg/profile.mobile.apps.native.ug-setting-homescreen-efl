@@ -17,7 +17,6 @@
 
 
 #include <vconf.h>
-//#include <pkgmgr-info.h>
 
 #include "data.h"
 #include "home-style.h"
